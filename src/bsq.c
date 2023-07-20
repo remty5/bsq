@@ -6,30 +6,24 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:08:30 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/20 19:25:20 by rvandepu         ###   ########.fr       */
+/*   Updated: 2023/07/20 21:22:06 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
-#define SIZE 1024
 
 int	bsq_main(int fd)
 {
 	struct s_map	map;
-	char			buf[SIZE];
-	int				c;
+	char			*file;
 
-	c = 1;
 	map.h = 0;
-	if (fd >= 0)
+	if (ft_read_file(&file, fd) == 0)
 	{
-		{
-			c = read(fd, buf, SIZE);
-			ft_parse_first_line(buf, &map.h);
-			printf("line_count = %d\n", map.h);
-		}
-		if (!c)
-			exit(0);
+		printf("%s", file);
+		free(file);
+		return (0);
 	}
-	return (1);
+	else
+		return (1);
 }

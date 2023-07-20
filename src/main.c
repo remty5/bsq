@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:02:10 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/20 18:18:54 by rvandepu         ###   ########.fr       */
+/*   Updated: 2023/07/20 21:07:10 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int argc, char *argv[])
 {
 	int	i;
+	int	f;
 	int	e;
 
 	e = 0;
@@ -22,9 +23,19 @@ int	main(int argc, char *argv[])
 	{
 		i = 1;
 		while (i < argc)
-			e += bsq_main(open(argv[i++], O_RDONLY));
+		{
+			f = open(argv[i++], O_RDONLY);
+			if (f == -1 || bsq_main(f) != 0)
+			{
+				write(2, "map error\n", 10);
+				e++;
+			}
+		}
 	}
-	else
-		e = bsq_main(0);
+	else if (bsq_main(0) != 0)
+	{
+		write(2, "map error\n", 10);
+		e++;
+	}
 	return (e);
 }

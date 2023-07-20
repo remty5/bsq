@@ -6,11 +6,29 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 14:56:50 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/20 19:25:20 by rvandepu         ###   ########.fr       */
+/*   Updated: 2023/07/20 21:19:05 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "bsq.h"
+
+void	*ft_realloc(char *buf, int size)
+{
+	char	*new_buf;
+	int		i;
+
+	new_buf = malloc(size + SIZE);
+	if (new_buf == NULL)
+	{
+		free(buf);
+		return (NULL);
+	}
+	i = -1;
+	while (++i < size)
+		new_buf[i] = buf[i];
+	free(buf);
+	return (new_buf);
+}
 
 char	*ft_strdup(char *src)
 {
