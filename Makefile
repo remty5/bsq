@@ -6,7 +6,7 @@
 #    By: rvandepu <rvandepu@student.42lehavre.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 15:57:10 by rvandepu          #+#    #+#              #
-#    Updated: 2023/07/20 13:24:37 by rvandepu         ###   ########.fr        #
+#    Updated: 2023/07/20 14:47:27 by cjouenne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,10 @@ OBJ_DIR := bin
 
 BIN := bsq
 
-SOURCES := main.c bsq.c 
+SOURCES := main.c\
+	bsq.c\
+	parser.c\
+
 SRC := $(SOURCES:%=$(SRC_DIR)/%)
 OBJ := $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
@@ -44,4 +47,4 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR):
-	$(MKDIR) -p $@
+	mkdir -p $@
