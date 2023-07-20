@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 14:54:53 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/20 14:56:23 by cjouenne         ###   ########.fr       */
+/*   Updated: 2023/07/20 19:25:20 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 
 # include <unistd.h>
 
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
-void	ft_putnbr(int n);
+char	*ft_strdup(char *src);
+//void	ft_putnbr(int n);
 int		ft_atoi(char *str);
 
 #endif
