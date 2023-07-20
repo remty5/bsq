@@ -6,7 +6,7 @@
 #    By: rvandepu <rvandepu@student.42lehavre.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 15:57:10 by rvandepu          #+#    #+#              #
-#    Updated: 2023/07/20 20:50:53 by rvandepu         ###   ########.fr        #
+#    Updated: 2023/07/20 22:53:06 by rvandepu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ BIN := bsq
 SOURCES := main.c\
 	bsq.c\
 	parser.c\
+	ft_read_utils.c\
 	ft_utils.c\
 
 SRC := $(SOURCES:%=$(SRC_DIR)/%)

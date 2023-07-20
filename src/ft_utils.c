@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 14:56:50 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/20 21:19:05 by rvandepu         ###   ########.fr       */
+/*   Updated: 2023/07/20 22:52:33 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*ft_strdup(char *src)
 
 int	ft_atoi(char *str)
 {
-	int				n;
+	int	n;
 
 	n = 0;
 	while ('0' <= *str && *str <= '9')
