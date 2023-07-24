@@ -6,12 +6,14 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:44:56 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/24 16:15:11 by cjouenne         ###   ########.fr       */
+/*   Updated: 2023/07/24 16:53:30 by cjouenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 #include "bsq.h"
+
+#include <stdio.h>
 
 int	ft_parse_first_line(char *buf, t_map *map)
 {
@@ -41,6 +43,7 @@ int	ft_parse_first_line(char *buf, t_map *map)
 void	ft_parse_map(t_map *map, char *file, int start)
 {
 	int	i;
+	int	j;
 
 	i = -1;
 	file += start;
@@ -48,4 +51,14 @@ void	ft_parse_map(t_map *map, char *file, int start)
 		;
 	map->w = i;
 	i = -1;
+	map->map = malloc(sizeof(char *) * map->h);
+	while (++i < map->h)
+	{
+		j = -1;
+		map->map[i] = malloc(sizeof(char) * map->w);
+		while (++j < map->w)
+		{
+			map->map[i][j] = file[i + j];
+		}
+	}
 }
