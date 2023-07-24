@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:07:02 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/20 23:55:10 by rvandepu         ###   ########.fr       */
+/*   Updated: 2023/07/24 13:03:46 by cjouenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int		bsq_main(int fd);
 // parser.c
 int		ft_read_file(char **str, int fd);
 //void	ft_read_map(int fd);
-void	ft_parse_first_line(char *buf, int *line_count);
+int		ft_parse_first_line(char *buf, t_map *map);
+void	ft_parse_map(t_map *map, char *file, int start);
 
 #endif

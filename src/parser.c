@@ -6,29 +6,46 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:44:56 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/20 22:51:27 by rvandepu         ###   ########.fr       */
+/*   Updated: 2023/07/24 16:15:11 by cjouenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 #include "bsq.h"
 
-void	ft_parse_first_line(char *buf, int *line_count)
+int	ft_parse_first_line(char *buf, t_map *map)
 {
 	int	i;
 	int	j;
+	int	h;
 
 	i = -1;
 	j = 0;
-	*line_count = 0;
+	h = 0;
+	map->h = 0;
 	while (buf[++i] != '\n')
 		;
+	while (++h <= 3)
+		map->c[h - 1] = buf[i - h];
 	i -= 4;
 	while (j <= i)
 	{
-		*line_count += (int)(buf[j] - 48);
-		*line_count *= 10;
+		map->h = (int)(buf[j] - 48);
+		map->h *= 10;
 		j++;
 	}
-	*line_count /= 10;
+	map->h /= 10;
+	return (i + 4 + 1);
+}
+
+void	ft_parse_map(t_map *map, char *file, int start)
+{
+	int	i;
+
+	i = -1;
+	file += start;
+	while (file[++i] != '\n')
+		;
+	map->w = i;
+	i = -1;
 }
