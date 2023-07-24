@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 14:56:50 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/20 22:52:33 by rvandepu         ###   ########.fr       */
+/*   Updated: 2023/07/24 18:01:57 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_realloc(char *buf, int size)
 	char	*new_buf;
 	int		i;
 
-	new_buf = malloc(size + SIZE);
+	new_buf = malloc(size + READ_SIZE);
 	if (new_buf == NULL)
 	{
 		free(buf);

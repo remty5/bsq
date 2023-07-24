@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:07:02 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/24 13:03:46 by cjouenne         ###   ########.fr       */
+/*   Updated: 2023/07/24 18:09:27 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-# define SIZE 512
+# define READ_SIZE 512
 
 typedef struct s_map {
 	char	**map;
@@ -29,8 +29,6 @@ typedef struct s_map {
 	char	c[3];
 }	t_map;
 
-// bsq.c
-int		bsq_main(int fd);
 // parser.c
 int		ft_read_file(char **str, int fd);
 //void	ft_read_map(int fd);

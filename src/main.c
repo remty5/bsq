@@ -6,36 +6,54 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:02:10 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/24 16:59:51 by cjouenne         ###   ########.fr       */
+/*   Updated: 2023/07/24 18:14:12 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
+int	bsq(int fd)
+{
+	struct s_map	map;
+	char			*file;
+	int				start;
+
+	map.h = 0;
+	if (!ft_read_file(&file, fd))
+		return (0);
+	start = ft_parse_first_line(file, &map);
+	ft_parse_map(&map, file, start);
+	printf("file is %s\n", file);
+	free(file);
+	return (1);
+}
+
+int	ft_main_err(int fd)
+{
+	write(2, "map error\n", 10);
+	if (fd >= 3)
+		close(fd);
+	return (1);
+}
+
 int	main(int argc, char *argv[])
 {
 	int	i;
-	int	f;
-	int	e;
+	int	fd;
+	int	err;
 
-	e = 0;
+	err = 0;
 	if (argc >= 2)
 	{
 		i = 1;
 		while (i < argc)
 		{
-			f = open(argv[i++], O_RDONLY);
-			if (f == -1 || bsq_main(f) != 0)
-			{
-				write(2, "map error\n", 10);
-				e++;
-			}
+			fd = open(argv[i++], O_RDONLY);
+			if (fd == -1 || !bsq(fd))
+				err += ft_main_err(fd);
 		}
 	}
-	else if (bsq_main(0) != 0)
-	{
-		write(2, "map error\n", 10);
-		e++;
-	}
-	return (e);
+	else if (!bsq(0))
+		err += ft_main_err(0);
+	return (err);
 }

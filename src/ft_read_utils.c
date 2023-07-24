@@ -6,7 +6,7 @@
 /*   By: rvandepu <rvandepu@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 22:51:08 by rvandepu          #+#    #+#             */
-/*   Updated: 2023/07/20 23:53:35 by rvandepu         ###   ########.fr       */
+/*   Updated: 2023/07/24 18:02:01 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,21 @@ int	ft_read_file(char **str, int fd)
 	int		o;
 	int		i;
 
-	buf = malloc(SIZE);
+	buf = malloc(READ_SIZE);
 	if (buf == NULL)
-		return (-1);
+		return (0);
 	c = 1;
 	o = 0;
 	i = 0;
 	while (c > 0)
 	{
-		c = read(fd, buf + i, SIZE);
+		c = read(fd, buf + i, READ_SIZE);
 		i += c;
 		if (i > o)
 		{
-			buf = ft_realloc(buf, o += SIZE);
+			buf = ft_realloc(buf, o += READ_SIZE);
 			if (buf == NULL)
-				return (-1);
+				return (0);
 		}
 	}
 	return (ft_read_file_return(str, buf, c, i));
@@ -50,9 +50,9 @@ int	ft_read_file_return(char **str, char *buf, int c, int i)
 		*str = ft_strdup(buf);
 		free(buf);
 		if (*str == NULL)
-			return (-1);
-		return (0);
+			return (0);
+		return (1);
 	}
 	free(buf);
-	return (-1);
+	return (0);
 }
