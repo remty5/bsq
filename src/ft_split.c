@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 21:28:07 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/24 21:37:22 by cjouenne         ###   ########.fr       */
+/*   Updated: 2023/07/25 00:13:29 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,23 @@ int	is_charset(char *str, char *charset, int start)
 int	count_word(char *str, char *charset)
 {
 	int	i;
-	int	count;
+	int	n;
+	int	c;
 
 	i = -1;
-	count = 0;
-	if (str == 0 || charset == 0)
-		return (0);
+	n = 0;
+	c = 1;
 	while (str[++i])
 	{
-		if (is_charset(str, charset, i) && i > 0)
+		if (c && !is_charset(str, charset, i))
 		{
-			i += 1;
-			if (str[i + 1] != 0)
-				count++;
+			n++;
+			c = 0;
 		}
+		else if (is_charset(str, charset, i))
+			c = 1;
 	}
-	return (count + 1);
+	return (n);
 }
 
 char	*_ft_strdup(char *src, char *charset)
@@ -78,7 +79,7 @@ char	**ft_split(char *str, char *charset)
 	int		i;
 	int		j;
 
-	split = (char **) malloc(sizeof(char *) * count_word(str, charset) + 1);
+	split = (char **) malloc(sizeof(char *) * (count_word(str, charset) + 1));
 	if (split == NULL)
 		return (NULL);
 	i = -1;

@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:44:56 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/24 22:16:15 by cjouenne         ###   ########.fr       */
+/*   Updated: 2023/07/24 23:55:31 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_parse_first_line(char *buf, t_map *map)
 	j = 0;
 	h = 0;
 	map->h = 0;
-	while (buf[++i] != '\n')
+	while (buf[++i] != '\n' && buf[i])
 		;
 	while (++h <= 3)
 		map->c[h - 1] = buf[i - h];
@@ -40,21 +40,33 @@ int	ft_parse_first_line(char *buf, t_map *map)
 	return (i + 4 + 1);
 }
 
+int	ft_free_map(t_map m)
+{
+	int	i;
+
+	i = 0;
+	while (m.map[i])
+		free(m.map[i++]);
+	free(m.map);
+	return (1);
+}
+
 int	ft_parse_map(t_map *map, char *file, int start)
 {
 	int	i;
 
 	if (!ft_verif_map(file))
 		return (0);
-	i = -1;
 	file += start;
+	i = -1;
 	while (file[++i] != '\n')
 		;
 	map->w = i;
-	i = -1;
-	map->map = malloc(sizeof(char *) * map->h);
-	if (map->map == NULL)
-		return (0);
 	map->map = ft_split(file, "\n");
+	i = -1;
+	while (map->map[++i])
+		;
+	if (i != map->h)
+		return (!ft_free_map(*map));
 	return (1);
 }

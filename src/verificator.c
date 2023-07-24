@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 18:05:45 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/24 22:07:33 by cjouenne         ###   ########.fr       */
+/*   Updated: 2023/07/24 23:58:04 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,22 @@ int	ft_verif_map(char *file_buffer)
 	int	i;
 
 	i = -1;
-	while (file_buffer[++i] != '\n')
+	while (file_buffer[++i] != '\n' && file_buffer[i])
 		;
 	if (i < 4)
 	{
-		write(2, "map error !\n", 12);
+		write(2, "map error\n", 10);
 		return (0);
 	}
 	if (!ft_verif_line(&file_buffer[i + 1]))
 		return (0);
 	return (1);
+}
+
+int	ft_verif_error(void)
+{
+	write(2, "map error\n", 10);
+	return (0);
 }
 
 int	ft_verif_line(char *file_buffer)
@@ -38,10 +44,7 @@ int	ft_verif_line(char *file_buffer)
 	int	is_first_line;
 
 	if (*file_buffer == '\0' || *file_buffer == '\n')
-	{
-		write(2, "map error !\n", 12);
-		return (0);
-	}
+		return (ft_verif_error());
 	n = 0;
 	i = -1;
 	is_first_line = 1;
@@ -51,10 +54,7 @@ int	ft_verif_line(char *file_buffer)
 		{
 			is_first_line = 0;
 			if (line_len != n)
-			{
-				write(2, "map error !\n", 12);
-				return (0);
-			}
+				return (ft_verif_error());
 			n = 0;
 			continue ;
 		}

@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:07:02 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/24 22:15:23 by cjouenne         ###   ########.fr       */
+/*   Updated: 2023/07/24 23:52:25 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,14 @@ typedef struct s_map {
 	char	c[3];
 }	t_map;
 
+// ft_solver.c
+int		ft_solve(t_map m);
+
 // parser.c
 int		ft_read_file(char **str, int fd);
 //void	ft_read_map(int fd);
 int		ft_parse_first_line(char *buf, t_map *map);
+int		ft_free_map(t_map m);
 int		ft_parse_map(t_map *map, char *file, int start);
 
 // verificator.c
