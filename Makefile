@@ -6,7 +6,7 @@
 #    By: rvandepu <rvandepu@student.42lehavre.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 15:57:10 by rvandepu          #+#    #+#              #
-#    Updated: 2023/07/24 18:49:57 by cjouenne         ###   ########.fr        #
+#    Updated: 2023/07/24 21:28:36 by cjouenne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ SOURCES := main.c\
 	ft_read_utils.c\
 	ft_utils.c\
 	verificator.c\
+	post_verificator.c\
+	ft_split.c\
 
 SRC := $(SOURCES:%=$(SRC_DIR)/%)
 OBJ := $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

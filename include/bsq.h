@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:07:02 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/24 19:29:24 by cjouenne         ###   ########.fr       */
+/*   Updated: 2023/07/24 21:36:34 by cjouenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,17 @@ void	ft_parse_map(t_map *map, char *file, int start);
 // verificator.c
 void	ft_verif_map(char *file_buffer);
 void	ft_verif_line(char *file_buffer);
+
+// post_verificator.c
+void	ft_post_verif_map(t_map *map);
+void	ft_verif_char(t_map *map);
+int		ft_is_valid_char(char c, t_map *map);
+void	ft_verif_map_char(t_map *map);
+
+// ft_split.c
+char	*_ft_strdup(char *src, char *charset);
+char	**ft_split(char *str, char *charset);
+int		ft_strlen(char *str);
+int		is_charset(char *str, char *charset, int start);
+int		count_word(char *str, char *charset);
 #endif
