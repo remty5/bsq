@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:07:33 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/24 21:40:40 by cjouenne         ###   ########.fr       */
+/*   Updated: 2023/07/24 21:45:42 by cjouenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ void	ft_verif_map_char(t_map *map)
 	printf("%d\n", map->h);
 	while (++i < map->h)
 	{
-		printf("%s\n", map->map[i]);
 		j = -1;
+		while (++j < map->w)
+			if (!ft_is_valid_char(map->map[i][j], map))
+				write(2, "map error\n", 10);
 	}
 }
