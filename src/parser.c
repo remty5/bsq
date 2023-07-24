@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:44:56 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/24 21:38:57 by cjouenne         ###   ########.fr       */
+/*   Updated: 2023/07/24 22:16:15 by cjouenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,12 @@ int	ft_parse_first_line(char *buf, t_map *map)
 	return (i + 4 + 1);
 }
 
-void	ft_parse_map(t_map *map, char *file, int start)
+int	ft_parse_map(t_map *map, char *file, int start)
 {
 	int	i;
 
-	ft_verif_map(file);
+	if (!ft_verif_map(file))
+		return (0);
 	i = -1;
 	file += start;
 	while (file[++i] != '\n')
@@ -53,6 +54,7 @@ void	ft_parse_map(t_map *map, char *file, int start)
 	i = -1;
 	map->map = malloc(sizeof(char *) * map->h);
 	if (map->map == NULL)
-		return ;
+		return (0);
 	map->map = ft_split(file, "\n");
+	return (1);
 }

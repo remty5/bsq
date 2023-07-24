@@ -6,18 +6,20 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:07:33 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/24 21:45:42 by cjouenne         ###   ########.fr       */
+/*   Updated: 2023/07/24 22:11:31 by cjouenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
-void	ft_post_verif_map(t_map *map)
+int	ft_post_verif_map(t_map *map)
 {
-	ft_verif_char(map);
+	if (!ft_verif_char(map))
+		return (0);
+	return (1);
 }
 
-void	ft_verif_char(t_map *map)
+int	ft_verif_char(t_map *map)
 {
 	int	i;
 	int	j;
@@ -29,10 +31,17 @@ void	ft_verif_char(t_map *map)
 	{
 		j = i;
 		while (++j < size)
+		{
 			if (map->c[i] == map->c[j])
+			{
 				write(2, "map error\n", 10);
+				return (0);
+			}
+		}
 	}
-	ft_verif_map_char(map);
+	if (!ft_verif_map_char(map))
+		return (0);
+	return (1);
 }
 
 int	ft_is_valid_char(char c, t_map *map)
@@ -50,7 +59,7 @@ int	ft_is_valid_char(char c, t_map *map)
 	return (res);
 }
 
-void	ft_verif_map_char(t_map *map)
+int	ft_verif_map_char(t_map *map)
 {
 	int	i;
 	int	j;
@@ -61,7 +70,13 @@ void	ft_verif_map_char(t_map *map)
 	{
 		j = -1;
 		while (++j < map->w)
+		{
 			if (!ft_is_valid_char(map->map[i][j], map))
+			{
 				write(2, "map error\n", 10);
+				return (0);
+			}
+		}
 	}
+	return (1);
 }
