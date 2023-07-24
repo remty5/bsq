@@ -6,7 +6,7 @@
 #    By: rvandepu <rvandepu@student.42lehavre.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 15:57:10 by rvandepu          #+#    #+#              #
-#    Updated: 2023/07/24 21:28:36 by cjouenne         ###   ########.fr        #
+#    Updated: 2023/07/24 21:44:52 by rvandepu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ BIN := bsq
 
 SOURCES := main.c\
 	parser.c\
+	ft_solver.c\
 	ft_read_utils.c\
 	ft_utils.c\
 	verificator.c\

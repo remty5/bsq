@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 14:56:50 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/24 18:01:57 by rvandepu         ###   ########.fr       */
+/*   Updated: 2023/07/24 21:42:14 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,13 @@ char	*ft_strdup(char *src)
 	return (dest);
 }
 
-/*void	ft_putnbr(int n)
+int	ft_min(int a, int b)
 {
-	if (n < 0)
-		n *= -1;
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-	}
-	ft_putchar((n % 10) + 48);
-}*/
+	if (a < b)
+		return (a);
+	else
+		return (b);
+}
 
 int	ft_atoi(char *str)
 {
