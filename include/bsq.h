@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:07:02 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/24 18:09:27 by rvandepu         ###   ########.fr       */
+/*   Updated: 2023/07/24 19:29:24 by cjouenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,7 @@ int		ft_read_file(char **str, int fd);
 int		ft_parse_first_line(char *buf, t_map *map);
 void	ft_parse_map(t_map *map, char *file, int start);
 
+// verificator.c
+void	ft_verif_map(char *file_buffer);
+void	ft_verif_line(char *file_buffer);
 #endif
