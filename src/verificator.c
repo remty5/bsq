@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 18:05:45 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/25 11:10:44 by cjouenne         ###   ########.fr       */
+/*   Updated: 2023/07/25 11:18:57 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,6 @@ int	ft_verif_map(char *file_buffer)
 	return (1);
 }
 
-int	ft_verif_error(void)
-{
-	return (0);
-}
-
 int	ft_verif_line(char *file_buffer)
 {
 	int	line_len;
@@ -40,7 +35,7 @@ int	ft_verif_line(char *file_buffer)
 	int	is_first_line;
 
 	if (*file_buffer == '\0' || *file_buffer == '\n')
-		return (ft_verif_error());
+		return (0);
 	n = 0;
 	i = -1;
 	is_first_line = 1;
@@ -50,7 +45,7 @@ int	ft_verif_line(char *file_buffer)
 		{
 			is_first_line = 0;
 			if (line_len != n)
-				return (ft_verif_error());
+				return (0);
 			n = 0;
 			continue ;
 		}
