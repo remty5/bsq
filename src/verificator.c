@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 18:05:45 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/24 23:58:04 by rvandepu         ###   ########.fr       */
+/*   Updated: 2023/07/25 11:10:44 by cjouenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ int	ft_verif_map(char *file_buffer)
 	while (file_buffer[++i] != '\n' && file_buffer[i])
 		;
 	if (i < 4)
-	{
-		write(2, "map error\n", 10);
 		return (0);
-	}
 	if (!ft_verif_line(&file_buffer[i + 1]))
 		return (0);
 	return (1);
@@ -32,7 +29,6 @@ int	ft_verif_map(char *file_buffer)
 
 int	ft_verif_error(void)
 {
-	write(2, "map error\n", 10);
 	return (0);
 }
 

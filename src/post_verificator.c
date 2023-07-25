@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:07:33 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/25 02:28:03 by rvandepu         ###   ########.fr       */
+/*   Updated: 2023/07/25 11:10:33 by cjouenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,7 @@ int	ft_verif_char(t_map *map)
 		while (++j < size)
 		{
 			if (map->c[i] == map->c[j])
-			{
-				write(2, "map error\n", 10);
 				return (0);
-			}
 		}
 	}
 	if (!ft_verif_map_char(map))
@@ -49,7 +46,7 @@ int	ft_is_valid_char(char c, t_map *map)
 	int	i;
 	int	res;
 
-	i = -1;
+	i = 0;
 	res = 0;
 	while (++i < 3)
 	{
@@ -72,10 +69,7 @@ int	ft_verif_map_char(t_map *map)
 		while (++j < map->w)
 		{
 			if (!ft_is_valid_char(map->map[i][j], map))
-			{
-				write(2, "map error\n", 10);
 				return (0);
-			}
 		}
 	}
 	return (1);
