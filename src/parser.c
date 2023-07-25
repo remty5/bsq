@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:44:56 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/24 23:55:31 by rvandepu         ###   ########.fr       */
+/*   Updated: 2023/07/25 02:34:02 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,17 @@ int	ft_parse_first_line(char *buf, t_map *map)
 	int	h;
 
 	i = -1;
-	j = 0;
 	h = 0;
-	map->h = 0;
 	while (buf[++i] != '\n' && buf[i])
 		;
 	while (++h <= 3)
 		map->c[h - 1] = buf[i - h];
 	i -= 4;
+	j = 0;
+	map->h = 0;
 	while (j <= i)
-	{
-		map->h = (int)(buf[j] - 48);
-		map->h *= 10;
-		j++;
-	}
-	map->h /= 10;
+		map->h = (map->h * 10) + (int)(buf[j++] - 48);
+	//map->h /= 10;
 	return (i + 4 + 1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:02:10 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/25 00:37:52 by rvandepu         ###   ########.fr       */
+/*   Updated: 2023/07/25 02:37:32 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	bsq(int fd)
 		free(file);
 		return (0);
 	}
-	printf("file is %s\n", file);
+	//printf("file is %s\n", file);
 	free(file);
 	ft_solve(map);
 	ft_free_map(map);
@@ -57,6 +57,8 @@ int	main(int argc, char *argv[])
 			fd = open(argv[i++], O_RDONLY);
 			if (fd == -1 || !bsq(fd))
 				err += ft_main_err(fd);
+			if (i < argc)
+				write(1, "\n", 1);
 		}
 	}
 	else if (!bsq(0))
