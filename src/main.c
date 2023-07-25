@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:02:10 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/25 11:08:59 by cjouenne         ###   ########.fr       */
+/*   Updated: 2023/07/25 13:46:14 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	bsq(int fd)
 	map.h = 0;
 	if (!ft_read_file(&file, fd))
 		return (0);
+	close(fd);
 	start = ft_parse_first_line(file, &map);
 	if (!ft_parse_map(&map, file, start) || !ft_post_verif_map(&map))
 	{

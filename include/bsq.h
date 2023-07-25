@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:07:02 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/24 23:52:25 by rvandepu         ###   ########.fr       */
+/*   Updated: 2023/07/25 11:50:40 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-# define READ_SIZE 512
+# define READ_SIZE 4096
 
 typedef struct s_map {
 	char	**map;
