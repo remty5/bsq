@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:07:33 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/25 11:10:33 by cjouenne         ###   ########.fr       */
+/*   Updated: 2023/07/25 17:21:22 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ int	ft_is_valid_char(char c, t_map *map)
 
 	i = 0;
 	res = 0;
-	while (++i < 3)
+	while (i < 2)
 	{
-		if (c == map->c[i])
+		if (c == map->c[i++])
 			res++;
 	}
 	return (res);
@@ -62,7 +62,6 @@ int	ft_verif_map_char(t_map *map)
 	int	j;
 
 	i = -1;
-	//printf("%d\n", map->h);
 	while (++i < map->h)
 	{
 		j = -1;

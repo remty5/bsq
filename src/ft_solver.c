@@ -6,7 +6,7 @@
 /*   By: rvandepu <rvandepu@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 18:43:05 by rvandepu          #+#    #+#             */
-/*   Updated: 2023/07/25 02:28:16 by rvandepu         ###   ########.fr       */
+/*   Updated: 2023/07/25 17:28:57 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_disp_map(t_map m, int x, int y, int size)
 		while (++j < m.w)
 		{
 			if (x <= j && j < x + size && y <= i && i < y + size)
-				write(1, m.c, 1);
+				write(1, m.c + 2, 1);
 			else
 				write(1, m.map[i] + j, 1);
 		}
@@ -82,8 +82,6 @@ int	ft_solve(t_map m)
 	while (++i < m.w * m.h)
 		if (tab[i / m.w][i % m.w] > tab[emacs / m.w][emacs % m.w])
 			emacs = i;
-	//printf("x: %d, y: %d, size: %d\n", emacs % m.w, \
-	//	emacs / m.w, tab[emacs / m.w][emacs % m.w]);
 	ft_disp_map(m, emacs % m.w, emacs / m.w, tab[emacs / m.w][emacs % m.w]);
 	ft_free_tab(tab, -1);
 	return (1);

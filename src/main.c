@@ -6,7 +6,7 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:02:10 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/25 13:46:14 by rvandepu         ###   ########.fr       */
+/*   Updated: 2023/07/25 17:14:36 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,18 @@ int	bsq(int fd)
 	if (!ft_read_file(&file, fd))
 		return (0);
 	close(fd);
-	start = ft_parse_first_line(file, &map);
-	if (!ft_parse_map(&map, file, start) || !ft_post_verif_map(&map))
+	if (!ft_parse_first_line(file, &map, &start)
+		||!ft_parse_map(&map, file, start))
 	{
 		free(file);
 		return (0);
 	}
-	//printf("file is %s\n", file);
+	if (!ft_post_verif_map(&map))
+	{
+		ft_free_map(map);
+		free(file);
+		return (0);
+	}
 	free(file);
 	ft_solve(map);
 	ft_free_map(map);

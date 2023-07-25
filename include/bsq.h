@@ -6,15 +6,12 @@
 /*   By: cjouenne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:07:02 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/07/25 11:50:40 by rvandepu         ###   ########.fr       */
+/*   Updated: 2023/07/25 17:17:04 by rvandepu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BSQ_H
 # define BSQ_H
-
-// TODO: get rid of this
-# include <stdio.h>
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -34,8 +31,7 @@ int		ft_solve(t_map m);
 
 // parser.c
 int		ft_read_file(char **str, int fd);
-//void	ft_read_map(int fd);
-int		ft_parse_first_line(char *buf, t_map *map);
+int		ft_parse_first_line(char *buf, t_map *map, int *start);
 int		ft_free_map(t_map m);
 int		ft_parse_map(t_map *map, char *file, int start);
 
